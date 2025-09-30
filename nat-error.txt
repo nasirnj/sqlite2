@@ -1,0 +1,29 @@
+Collecting hpack<5,>=4.0 (from h2<5,>=3->httpx[http2]>=0.20.0->qdrant-client>=1.9.1->mem0ai~=0.1.30->nvidia-nat-mem0ai->nvidia-nat-all->nvidia-nat[al
+  Downloading hpack-4.0.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting h2<5,>=3 (from httpx[http2]>=0.20.0->qdrant-client>=1.9.1->mem0ai~=0.1.30->nvidia-nat-mem0ai->nvidia-nat-all->nvidia-nat[all])
+  Downloading h2-4.0.0-py3-none-any.whl.metadata (3.5 kB)
+  Downloading h2-3.2.0-py2.py3-none-any.whl.metadata (32 kB)
+Collecting hyperframe<6,>=5.2.0 (from h2<5,>=3->httpx[http2]>=0.20.0->qdrant-client>=1.9.1->mem0ai~=0.1.30->nvidia-nat-mem0ai->nvidia-nat-all->nvidia
+  Downloading hyperframe-5.2.0-py2.py3-none-any.whl.metadata (7.2 kB)
+Collecting hpack<4,>=3.0 (from h2<5,>=3->httpx[http2]>=0.20.0->qdrant-client>=1.9.1->mem0ai~=0.1.30->nvidia-nat-mem0ai->nvidia-nat-all->nvidia-nat[al
+  Downloading hpack-3.0.0-py2.py3-none-any.whl.metadata (7.0 kB)
+Collecting h2<5,>=3 (from httpx[http2]>=0.20.0->qdrant-client>=1.9.1->mem0ai~=0.1.30->nvidia-nat-mem0ai->nvidia-nat-all->nvidia-nat[all])
+  Downloading h2-3.1.1-py2.py3-none-any.whl.metadata (31 kB)
+Collecting hpack<4,>=2.3 (from h2<5,>=3->httpx[http2]>=0.20.0->qdrant-client>=1.9.1->mem0ai~=0.1.30->nvidia-nat-mem0ai->nvidia-nat-all->nvidia-nat[al
+  Downloading hpack-2.3.0-py2.py3-none-any.whl.metadata (5.7 kB)
+Collecting h2<5,>=3 (from httpx[http2]>=0.20.0->qdrant-client>=1.9.1->mem0ai~=0.1.30->nvidia-nat-mem0ai->nvidia-nat-all->nvidia-nat[all])
+  Downloading h2-3.1.0-py2.py3-none-any.whl.metadata (31 kB)
+  Downloading h2-3.0.1-py2.py3-none-any.whl.metadata (30 kB)
+Collecting hyperframe<6,>=5.0 (from h2<5,>=3->httpx[http2]>=0.20.0->qdrant-client>=1.9.1->mem0ai~=0.1.30->nvidia-nat-mem0ai->nvidia-nat-all->nvidia-n
+  Downloading hyperframe-5.1.0-py2.py3-none-any.whl.metadata (7.0 kB)
+  Downloading hyperframe-5.0.0-py2.py3-none-any.whl.metadata (6.8 kB)
+Collecting h2<5,>=3 (from httpx[http2]>=0.20.0->qdrant-client>=1.9.1->mem0ai~=0.1.30->nvidia-nat-mem0ai->nvidia-nat-all->nvidia-nat[all])
+  Downloading h2-3.0.0-py2.py3-none-any.whl.metadata (27 kB)
+error: resolution-too-deep
+
+× Dependency resolution exceeded maximum depth
+╰─> Pip cannot resolve the current dependencies as the dependency graph is too complex for pip to solve efficiently.
+
+hint: Try adding lower bounds to constrain your dependencies, for example: 'package>=2.0.0' instead of just 'package'.
+
+
