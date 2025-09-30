@@ -1,0 +1,141 @@
+Perfect — let’s do this step-by-step from a **fresh code-server install** until you actually see the **Kernel picker** in the top-right corner of a notebook (`.ipynb`). I’ll include both **normal (online)** and **air-gapped** notes for each step so you know exactly what’s needed.
+
+---
+
+# 🔹 Step 1. Install the Jupyter Extension
+
+* You already did this ✅, but for completeness:
+
+```bash
+code-server --install-extension ms-toolsai.jupyter
+code-server --install-extension ms-python.python
+```
+
+📌 Both are required:
+
+* **Jupyter extension** = notebook UI integration.
+* **Python extension** = kernel discovery.
+
+---
+
+# 🔹 Step 2. Make Sure You Have Python Installed
+
+Run inside your code-server terminal:
+
+```bash
+python3 --version
+```
+
+* If no Python → install Python (via `dnf`, `yum`, or `apt`).
+* If multiple Pythons (e.g., system + conda/venv), that’s fine.
+
+---
+
+# 🔹 Step 3. Install Jupyter + Kernel Runtime
+
+This is the **backend engine** that the extension talks to.
+
+### Online system:
+
+```bash
+pip install jupyter notebook ipykernel
+```
+
+### Air-gapped:
+
+On an **internet machine**:
+
+```bash
+mkdir wheelhouse
+pip download jupyter notebook ipykernel -d wheelhouse/
+```
+
+Copy `wheelhouse/` to your server, then:
+
+```bash
+pip install --no-index --find-links=./wheelhouse jupyter notebook ipykernel
+```
+
+---
+
+# 🔹 Step 4. Register a Kernel
+
+Jupyter needs to know which Python environments are available as kernels.
+
+Pick the Python you want to expose (system or venv) and run:
+
+```bash
+python3 -m ipykernel install --user --name myenv --display-name "Python (myenv)"
+```
+
+* `--name` = internal ID (safe to keep lowercase, no spaces).
+* `--display-name` = what appears in the kernel picker in VS Code.
+
+✅ Repeat this for each environment you want (conda, venv, etc.).
+
+---
+
+# 🔹 Step 5. Verify Jupyter Sees Kernels
+
+Run:
+
+```bash
+jupyter kernelspec list
+```
+
+Example output:
+
+```
+Available kernels:
+  python3       /home/you/.local/share/jupyter/kernels/python3
+  myenv         /home/you/.local/share/jupyter/kernels/myenv
+```
+
+If nothing shows → your Step 4 didn’t succeed.
+
+---
+
+# 🔹 Step 6. Open a Notebook in Code-Server
+
+1. Start code-server.
+2. Create or open a file with `.ipynb` extension.
+3. Look at the **top-right corner**:
+   You should now see a dropdown saying **“Select Kernel”**.
+4. Click it → you’ll see your registered kernels (`Python (myenv)` etc.).
+5. Pick one → the notebook should connect and you can run cells.
+
+---
+
+# 🔹 Step 7. (Optional) Configure Default Interpreter
+
+If the Python extension doesn’t find your interpreter, set it manually in `settings.json`:
+
+1. Open `Preferences → Settings (JSON)` in code-server.
+2. Add:
+
+```json
+"python.defaultInterpreterPath": "/usr/bin/python3"
+```
+
+(Or point to your venv/conda environment.)
+
+---
+
+# 🔹 Step 8. Test It
+
+Create a cell in your `.ipynb` file:
+
+```python
+print("Hello from code-server kernel!")
+```
+
+Run it — you should see the output in place.
+
+---
+
+✅ After these 8 steps, the **kernel picker will be visible** in code-server and you can run Jupyter notebooks normally.
+
+---
+
+Would you like me to prepare you an **exact list of wheel files** (`ipykernel`, `jupyter`, `notebook`, plus their deps) so you don’t miss anything while downloading for your air-gapped server?
+
